@@ -1,4 +1,5 @@
 import React from 'react';
+import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios'
 import { ConversationalForm } from 'conversational-form';
 import './ConvoForm.css';
 
@@ -32,18 +33,21 @@ export default class ConvoForm extends React.Component {
         'tag': 'input',
         'type': 'radio',
         'name': 'clothingCategory',
+        'cf-conditional-imageRadio': 'no',
         'cf-questions': 'That\'s ok! What kind of clothing item were you looking for?',
         'cf-label': 'Top',
       },
       {
         'tag': 'input',
         'type': 'radio',
+        'cf-conditional-imageRadio': 'no',
         'name': 'clothingCategory',
         'cf-label': 'Pants',
       },
        {
         'tag': 'input',
         'type': 'radio',
+        'cf-conditional-imageRadio': 'no',
         'name': 'clothingCategory',
         'cf-label': 'Shoes',
       },
@@ -67,7 +71,7 @@ export default class ConvoForm extends React.Component {
   submitCallback() {
     var formDataSerialized = this.cf.getFormData(true);
     console.log("Formdata, obj:", formDataSerialized);
-    this.cf.addRobotChatResponse("You are done. Check the dev console for form data output.")
+    this.cf.addRobotChatResponse("Processing your search... 😎")
   }
 
   render() {
