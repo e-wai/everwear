@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Navbar from "./components/navbar/Navbar";
-import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ConvoForm from './components/ConvoForm.js';
@@ -19,8 +18,8 @@ class App extends Component {
 
     return (
       <>
-        <Navbar 
-          navbarState={this.state.navbarOpen} 
+        <Navbar
+          navbarState={this.state.navbarOpen}
           handleNavbar={this.handleNavbar}
         />
         <GlobalStyle />
