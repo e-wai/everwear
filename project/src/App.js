@@ -4,8 +4,6 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ConvoForm from './components/ConvoForm.js';
-
-
 import GlobalStyle from './styles/Global';
 
 class App extends Component {
