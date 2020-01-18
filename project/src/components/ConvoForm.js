@@ -1,5 +1,6 @@
 import React from 'react';
 import { ConversationalForm } from 'conversational-form';
+import './ConvoForm.css';
 
 export default class ConvoForm extends React.Component {
   constructor(props) {
@@ -71,8 +72,8 @@ export default class ConvoForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <div
+      <div id = "chat">
+        <div id = "chat2"
           ref={ref => this.elem = ref}
         />
       </div>

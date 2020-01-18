@@ -1,0 +1,7 @@
+#chat {
+    visibility: visible;
+    position: absolute;
+    width: 40%;
+    height: 100vh;
+    float: center;
+}
