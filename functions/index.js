@@ -48,9 +48,18 @@ let search = async function(q, imageUrl) {
 
 exports.search = async (req, res) => {
   console.log('REQUEST: %j', req.body);
-  const { q = '', imageUrl } = req.body;
-  const ret = await search(q, imageUrl);
-  res.json(ret);
+  // Set CORS headers for preflight requests
+  res.set('Access-Control-Allow-Origin', '*');
+  if (req.method === 'OPTIONS') {
+    // Allows POSTs from any origin with the Content-Type header
+    res.set('Access-Control-Allow-Methods', 'POST');
+    res.set('Access-Control-Allow-Headers', 'Content-Type');
+    res.status(204).send('');
+  } else {
+    const { q = '', imageUrl } = req.body;
+    const ret = await search(q, imageUrl);
+    res.json(ret);
+  }
 };
 
 // const q = 'black';
