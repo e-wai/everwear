@@ -37,7 +37,7 @@ let search = async function(q, imageUrl) {
 
 exports.search = async (req, res) => {
   console.log(`REQUEST: ${req.body}`);
-  const { q, imageUrl } = req.body;
+  const { q = '', imageUrl } = req.body;
   //const q = 'black'
   //const imageUrl = 'https://underarmour.scene7.com/is/image/Underarmour/V5-1216010-001_FC_Main?scl=1&fmt=jpg'
   const ret = await search(q, imageUrl);
