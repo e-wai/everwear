@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Navbar from "./components/navbar/Navbar";
-import logo from './logo.svg';
 import './App.css';
 import ConvoForm from './components/ConvoForm.js';
 import GlobalStyle from './styles/Global';
