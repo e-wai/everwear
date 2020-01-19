@@ -24,18 +24,11 @@ let searchBySiteWithBrowser = async function(browser, site, q, imageUrl) {
 
     try {
       await page.goto(url);
-      // await page.screenshot({ path: `screenshots/${site}1.png`, fullPage: true });
-      const imgTitles = await page.$$eval('#iur img', imgs => imgs.map(img => img.title));
-      const linkHandlers = await page.$x("//a[contains(text(), 'Visually similar images')]");
-      await Promise.all([
-        linkHandlers[0].click(),
-        page.waitForNavigation({ waitUntil: 'load'}),
-      ]);
-      // await page.screenshot({ path: `screenshots/${site}2.png`, fullPage: true });
-      const imgSrcs = await page.$$eval('#rg_s img', imgs => imgs.map(img => img.src));
-      const products = imgTitles.slice(0, 4).map((imgTitle, i) => {
-        return { src: imgSrcs[i], href: imgTitle };
-      });
+      // await page.screenshot({ path: `screenshots/${site}.png`, fullPage: true });
+      const products = await page.$$eval(
+        '#iur img',
+        imgs => imgs.slice(0,4).map(img => { return { src: img.src, href: img.title } })
+      );
       return { site, products };
     } catch (err) {
       console.error(err);
