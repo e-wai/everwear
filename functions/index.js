@@ -26,6 +26,10 @@ let searchBySiteWithBrowser = async function(browser, site, q, imageUrl) {
         '#iur img',
         imgs => imgs.slice(0,4).map(img => { return { src: img.src, href: img.title } })
       );
+      if (products.length === 0) {
+        console.log(`No results from ${site}`);
+        return null;
+      }
       return { site, products };
     } catch (err) {
       console.error(err);
