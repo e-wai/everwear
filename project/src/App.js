@@ -4,7 +4,7 @@ import './App.css';
 import ConvoForm from './components/ConvoForm.js';
 import ResultsList from './components/ResultsList.js';
 
-const dev = true;
+const dev = false;
 
 class App extends Component {
 
@@ -13,7 +13,9 @@ class App extends Component {
     this.state = {
       finishedSurvey: false,
       results: null,
-      navbarOpen: false
+      navbarOpen: false,
+      imgSrc: '',
+      q: ''
     };
 
     this.handleFinishedSurvey = this.handleFinishedSurvey.bind(this);
@@ -33,13 +35,15 @@ class App extends Component {
     });
   }
 
-  formSubmitCallback(response){
+  formSubmitCallback(response, ogURL, q){
     // Uncomment line below to change thing:
     this.handleFinishedSurvey();
 
     console.log('SUBMITTED');
     this.setState({
       results: response.data,
+      imgSrc: ogURL,
+      q: q
     });
   }
 
@@ -55,9 +59,9 @@ class App extends Component {
     }
     console.log(this.state.results);
     return (
-      <div className='container'>
+      <div className='app-container'>
         {current}
-        {this.state.results && <ResultsList results={this.state.results} />}
+        {this.state.results && <ResultsList results={this.state.results} searchImg={this.state.imgSrc} q={this.state.q}/>}
       </div>
     );
   }

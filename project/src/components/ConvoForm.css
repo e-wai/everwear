@@ -1,13 +1,14 @@
-/* #chat {
-    height: 100vh;
-    display: flex;
-} */
+#chat {
+  flex-grow: 1;
+  position: relative;
+  width: 100%;
+}
 
-.conversational-form {
-  align-content: center;
+#chat .conversational-form {
+  /* display: flex; */
+  /* align-content: center; */
   width: 70%;
-  justify-content: center;
-  height: 100%;
+  /* justify-content: center; */
   box-shadow: 0 2px 28px 0 rgba(0,0,0,0.12);
 }
 
@@ -15,22 +16,24 @@
   box-shadow: 0 0 0 1px rgba(0,0,0);
 }
 
-#chat2 {
-    visibility: visible;
-    position: absolute;
-    width: 40%;
-    height: 75vh; 
-    margin-left: 45%; 
-    margin-top: 5%;
-}
-
-
 #welcome-message {
-    visibility: visible;
-    position: absolute;
-    color: white;
-    width: 30%;
-    margin-left: 10%; 
-    margin-top: 20%;
+  color: var(--black);
+  width: 30%;
+  text-align: center;
+  margin: 2rem;
 }
 
+#spin {
+  display: inline-block;
+  width: 1rem;
+  animation-name: spin;
+  animation-duration: 4000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}

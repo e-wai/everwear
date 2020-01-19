@@ -31,14 +31,14 @@ const Navbar = (props) => {
           </NavLinks>
           <BurgerWrapper>
             <BurgerMenu
-              navbarState={props.navbarState} 
+              navbarState={props.navbarState}
               handleNavbar={props.handleNavbar}
             />
           </BurgerWrapper>
         </FlexContainer>
       </NavBar>
-      <CollapseMenu 
-        navbarState={props.navbarState} 
+      <CollapseMenu
+        navbarState={props.navbarState}
         handleNavbar={props.handleNavbar}
       />
    </>
@@ -52,7 +52,7 @@ const NavBar = styled(animated.nav)`
   width: 100%;
   top: 0;
   left: 0;
-  background: #2d3436;
+  background: #D6E1DD;
   z-index: 1;
   font-size: 1.4rem;
 `;
@@ -72,7 +72,7 @@ const NavLinks = styled(animated.ul)`
   margin: auto 0;
 
   & a {
-    color: #dfe6e9;
+    color: #161211;
     text-transform: uppercase;
     font-weight: 600;
     border-bottom: 1px solid transparent;
@@ -82,8 +82,8 @@ const NavLinks = styled(animated.ul)`
     cursor: pointer;
 
     &:hover {
-      color: #fdcb6e;
-      border-bottom: 1px solid #fdcb6e;
+      color: #6E974F;
+      border-bottom: 1px solid #6E974F;
     }
 
     @media (max-width: 768px) {

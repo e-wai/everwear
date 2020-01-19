@@ -4,7 +4,7 @@ import axios from 'axios';
 import { ConversationalForm } from 'conversational-form';
 import './ConvoForm.css';
 import hardData from '../data.json';
-import greenlogo from '../assets/greentoutline.png';
+import greenlogo from '../assets/nooutlinegreen.png';
 
 const cloudURL = 'https://us-central1-uofthacksvii-265521.cloudfunctions.net/search';
 
@@ -14,47 +14,31 @@ export default class ConvoForm extends React.Component {
     this.formFields = [
       {
         'tag': 'input',
-        'type': 'radio',
-        'name': 'imageRadio',
-        'cf-questions': 'Do you have an image URL of a clothing item you want?',
-        'cf-label': 'Yes',
-        'value': 'yes'
+        'type': 'text',
+        'name': 'imageUrl',
+        'cf-questions': 'Welcome! Paste the image URL of your clothing item you want'
       },
       {
         'tag': 'input',
         'type': 'radio',
-        'name': 'imageRadio',
-        'cf-label': 'No',
-        'value': 'no'
+        'name': 'color-choice',
+        'cf-questions': 'Thank you! Did you want it in the original color or a different one?',
+        'cf-label': 'original',
+        'value': 'original'
+      },
+      {
+        'tag': 'input',
+        'type': 'radio',
+        'name': 'color-choice',
+        'cf-label': 'different',
+        'value': 'diff'
       },
       {
         'tag': 'input',
         'type': 'text',
-        'name': 'imageUrl',
-        'cf-conditional-imageRadio': 'yes',
-        'cf-questions': 'Cool! Paste the image URL below'
-      },
-      {
-        'tag': 'input',
-        'type': 'radio',
-        'name': 'clothingCategory',
-        'cf-conditional-imageRadio': 'no',
-        'cf-questions': 'That\'s ok! What kind of clothing item were you looking for?',
-        'cf-label': 'Top',
-      },
-      {
-        'tag': 'input',
-        'type': 'radio',
-        'cf-conditional-imageRadio': 'no',
-        'name': 'clothingCategory',
-        'cf-label': 'Pants',
-      },
-       {
-        'tag': 'input',
-        'type': 'radio',
-        'cf-conditional-imageRadio': 'no',
-        'name': 'clothingCategory',
-        'cf-label': 'Shoes',
+        'name': 'colorInput',
+        'cf-questions': 'Nice, what color would you like to look for?',
+        'cf-conditional-color-choice': 'diff',
       },
     ];
 
@@ -76,27 +60,31 @@ export default class ConvoForm extends React.Component {
   submitCallback() {
     var formDataSerialized = this.cf.getFormData(true);
     console.log("Formdata, obj:", formDataSerialized);
-    this.cf.addRobotChatResponse("Processing your search... 😎")
+    this.cf.addRobotChatResponse("Processing your search... <span id='spin'>😎</span>")
+    const q = formDataSerialized.colorInput ? formDataSerialized.colorInput : ''
 
     if (this.props.dev){
       console.log('dev');
+      console.log(q)
       console.log(hardData);
-      this.cf.addRobotChatResponse("Done! 🥳");
-      this.props.appCallback(hardData);
+      // this.cf.addRobotChatResponse("Done! 🥳");
+      this.props.appCallback(hardData, 'https://underarmour.scene7.com/is/image/Underarmour/V5-1216010-001_FC_Main?scl=1&fmt=jpg', q);
     } else {
+      console.log(formDataSerialized.colorInput)
       axios({
         method: 'post',
         url: cloudURL,
         header: { 'content-type': 'application/json'},
         data: {
-          imageUrl: formDataSerialized.imageUrl
+          imageUrl: formDataSerialized.imageUrl,
+          q: q
         }
       })
       .then((response) => {
         console.log(response);
         this.cf.addRobotChatResponse("Done! 🥳")
         // TODO: connect to App.js
-        this.props.appCallback(response)
+        this.props.appCallback(response, formDataSerialized.imageUrl, q)
       })
       .catch((error) => {
         // handle error
@@ -112,7 +100,7 @@ export default class ConvoForm extends React.Component {
     return (
       <>
         <img src={greenlogo}/>
-        <h1 id = "welcome-message">Welcome to everwear! Tell us a little about you :)</h1>
+        <p id="welcome-message">We'll help you find the clothes you already want, but from <strong>ethical</strong>, <strong>sustainable</strong> sources.</p>
         <div id = "chat" ref={ref => this.elem = ref}>
         </div>
       </>
