@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/UofTHacksVII/static/css/main.29ad6a1c.chunk.css",
+    "main.js": "/UofTHacksVII/static/js/main.45d012eb.chunk.js",
+    "main.js.map": "/UofTHacksVII/static/js/main.45d012eb.chunk.js.map",
+    "runtime-main.js": "/UofTHacksVII/static/js/runtime-main.5709e0dd.js",
+    "runtime-main.js.map": "/UofTHacksVII/static/js/runtime-main.5709e0dd.js.map",
+    "static/js/2.974e4d58.chunk.js": "/UofTHacksVII/static/js/2.974e4d58.chunk.js",
+    "static/js/2.974e4d58.chunk.js.map": "/UofTHacksVII/static/js/2.974e4d58.chunk.js.map",
+    "index.html": "/UofTHacksVII/index.html",
+    "precache-manifest.84c3cb12f6b700c2b5185c5a53a4be2b.js": "/UofTHacksVII/precache-manifest.84c3cb12f6b700c2b5185c5a53a4be2b.js",
+    "service-worker.js": "/UofTHacksVII/service-worker.js",
+    "static/css/main.29ad6a1c.chunk.css.map": "/UofTHacksVII/static/css/main.29ad6a1c.chunk.css.map",
+    "static/js/2.974e4d58.chunk.js.LICENSE": "/UofTHacksVII/static/js/2.974e4d58.chunk.js.LICENSE",
+    "static/media/nooutlinegreen.png": "/UofTHacksVII/static/media/nooutlinegreen.d647e1b2.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5709e0dd.js",
+    "static/js/2.974e4d58.chunk.js",
+    "static/css/main.29ad6a1c.chunk.css",
+    "static/js/main.45d012eb.chunk.js"
+  ]
+}
