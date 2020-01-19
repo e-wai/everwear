@@ -109,15 +109,11 @@ export default class ConvoForm extends React.Component {
 
   render() {
     return (
-<<<<<<< Updated upstream
-      <div id = "chat" ref={ref => this.elem = ref}>
-=======
       <div>
-        <h1 id = "welcome-message">Tell us about you :)</h1>
+        <h1 id = "welcome-message">Welcome to everwear! Tell us a little about you :)</h1>
         <div id = "chat2"
           ref={ref => this.elem = ref}
         />
->>>>>>> Stashed changes
       </div>
     );
   }
