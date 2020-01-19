@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "91b7c19351672424322fc45364fc9ad3",
+    "revision": "152f4a330e3ad56cad18d166f129d002",
     "url": "/UofTHacksVII/index.html"
   },
   {
-    "revision": "3b1867f38b4cc73bc80a",
-    "url": "/UofTHacksVII/static/css/main.fe60d45d.chunk.css"
+    "revision": "cce3ed338c1954d32bfd",
+    "url": "/UofTHacksVII/static/css/main.29ad6a1c.chunk.css"
   },
   {
-    "revision": "ac87c5205cc5dfca6d5b",
-    "url": "/UofTHacksVII/static/js/2.47a347dd.chunk.js"
+    "revision": "bbe877a3b730c8ed7dde",
+    "url": "/UofTHacksVII/static/js/2.974e4d58.chunk.js"
   },
   {
     "revision": "e928fe768baa9832b5bc57eae021f30c",
-    "url": "/UofTHacksVII/static/js/2.47a347dd.chunk.js.LICENSE"
+    "url": "/UofTHacksVII/static/js/2.974e4d58.chunk.js.LICENSE"
   },
   {
-    "revision": "3b1867f38b4cc73bc80a",
-    "url": "/UofTHacksVII/static/js/main.d866dd38.chunk.js"
+    "revision": "cce3ed338c1954d32bfd",
+    "url": "/UofTHacksVII/static/js/main.45d012eb.chunk.js"
   },
   {
     "revision": "eec79047441b9eb20992",
