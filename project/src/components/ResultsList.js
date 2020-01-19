@@ -1,6 +1,18 @@
 import React from 'react';
 import './ResultsList.css';
 
+const dict = {
+  'alternativeapparel.com': 'Alternative Apparel',
+  'bodenusa.com': 'Boden',
+  'everlane.com': 'Everlane',
+  'fordays.com': 'For Days',
+  'kotn.com': 'Kotn',
+  'livefashionable.com': 'ABLE',
+  'peopletree.co.uk': 'People Tree',
+  'tentree.ca': 'tentree',
+  'wearpact.com': 'Pact'
+}
+
 const Result = ({ href, src }) => (
   <li className="results-list__item">
     <a href={href}>
@@ -20,7 +32,7 @@ const ResultsList = ({ results, searchImg, q }) => {
       <div className="results-list__list">
         { results.map(result => (
             <li key={result.site}>
-              <h3>{result.site}</h3>
+              <h3><a className='result-list__siteLink' href={'https://www.' + result.site}>{dict[result.site]}</a></h3>
               <ul className="results-list__row">
                 { result.products.map(product => <Result key={product.src} {...product} />) }
               </ul>
