@@ -28,6 +28,7 @@ let searchBySiteWithBrowser = async function(browser, site, q, imageUrl) {
       const [imgSrc, imgTitle] = await page.$eval('#iur img', el => [el.src, el.title]);
       return { site, src: imgSrc, href: imgTitle };
     } catch (err) {
+      console.error(err);
       return null;
     }
 };
@@ -45,8 +46,6 @@ let search = async function(q, imageUrl) {
       SITES.map(site => searchBySiteWithBrowser(browser, site, q, imageUrl))
     );
     return results.filter(result => result);
-  } catch (err) {
-    throw err;
   } finally {
     await browser.close();
   }
@@ -63,8 +62,13 @@ exports.search = async (req, res) => {
     res.status(204).send('');
   } else {
     const { q = '', imageUrl } = req.body;
-    const ret = await search(q, imageUrl);
-    res.json(ret);
+    try {
+      const ret = await search(q, imageUrl);
+      res.json(ret);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: err });
+    }
   }
 };
 

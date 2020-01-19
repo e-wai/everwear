@@ -112,6 +112,7 @@ export default class ConvoForm extends React.Component {
     return (
       <>
         <img src={greenlogo}/>
+        <h1 id = "welcome-message">Welcome to everwear! Tell us a little about you :)</h1>
         <div id = "chat" ref={ref => this.elem = ref}>
         </div>
       </>
