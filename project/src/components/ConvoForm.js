@@ -1,9 +1,6 @@
 import React from 'react';
-<<<<<<< Updated upstream
 import axios from 'axios';
-=======
 //import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios'
->>>>>>> Stashed changes
 import { ConversationalForm } from 'conversational-form';
 import './ConvoForm.css';
 const cloudURL = 'https://us-central1-uofthacksvii-265521.cloudfunctions.net/search';
