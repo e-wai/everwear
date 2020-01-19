@@ -39,7 +39,6 @@ class App extends Component {
       console.log(item.site)
     });
 
-
   }
 
   render() {

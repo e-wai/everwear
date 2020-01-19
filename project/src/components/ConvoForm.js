@@ -4,6 +4,7 @@ import axios from 'axios';
 import { ConversationalForm } from 'conversational-form';
 import './ConvoForm.css';
 import hardData from '../data.json';
+import greenlogo from '../assets/greentoutline.png';
 
 const cloudURL = 'https://us-central1-uofthacksvii-265521.cloudfunctions.net/search';
 
@@ -109,8 +110,11 @@ export default class ConvoForm extends React.Component {
 
   render() {
     return (
-      <div id = "chat" ref={ref => this.elem = ref}>
-      </div>
+      <>
+        <img src={greenlogo}/>
+        <div id = "chat" ref={ref => this.elem = ref}>
+        </div>
+      </>
     );
   }
 }
