@@ -24,9 +24,19 @@ let searchBySiteWithBrowser = async function(browser, site, q, imageUrl) {
 
     try {
       await page.goto(url);
-      //await page.screenshot({ path: `screenshots/${site}.png`, fullPage: true });
-      const [imgSrc, imgTitle] = await page.$eval('#iur img', el => [el.src, el.title]);
-      return { site, src: imgSrc, href: imgTitle };
+      // await page.screenshot({ path: `screenshots/${site}1.png`, fullPage: true });
+      const imgTitles = await page.$$eval('#iur img', imgs => imgs.map(img => img.title));
+      const linkHandlers = await page.$x("//a[contains(text(), 'Visually similar images')]");
+      await Promise.all([
+        linkHandlers[0].click(),
+        page.waitForNavigation({ waitUntil: 'load'}),
+      ]);
+      // await page.screenshot({ path: `screenshots/${site}2.png`, fullPage: true });
+      const imgSrcs = await page.$$eval('#rg_s img', imgs => imgs.map(img => img.src));
+      const products = imgTitles.slice(0, 4).map((imgTitle, i) => {
+        return { src: imgSrcs[i], href: imgTitle };
+      });
+      return { site, products };
     } catch (err) {
       console.error(err);
       return null;
@@ -74,4 +84,4 @@ exports.search = async (req, res) => {
 
 // const q = 'black';
 // const imageUrl = 'https://underarmour.scene7.com/is/image/Underarmour/V5-1216010-001_FC_Main?scl=1&fmt=jpg';
-// search(q, imageUrl).then(console.log).catch(console.err);
+// search(q, imageUrl).then(JSON.stringify).then(console.log).catch(console.err);
