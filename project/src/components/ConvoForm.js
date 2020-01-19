@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+//import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios'
 import { ConversationalForm } from 'conversational-form';
 import './ConvoForm.css';
 const cloudURL = 'https://us-central1-uofthacksvii-265521.cloudfunctions.net/search';
@@ -101,6 +102,7 @@ export default class ConvoForm extends React.Component {
         <div id = "chat2"
           ref={ref => this.elem = ref}
         />
+        <p>Welcome</p>
       </div>
     );
   }

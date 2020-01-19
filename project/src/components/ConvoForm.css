@@ -2,6 +2,7 @@
     visibility: visible;
     position: absolute;
     width: 40%;
-    height: 100vh;
-    float: center;
+    height: 75vh; 
+    margin-left: 30%; 
+    margin-top: 5%;
 }
