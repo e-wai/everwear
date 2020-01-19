@@ -5,44 +5,55 @@ import ConvoForm from './components/ConvoForm.js';
 import GlobalStyle from './styles/Global';import './App.css';
 
 class App extends Component {
-  state = {
-    navbarOpen: false,
-    finishedSurvey: false
+
+  constructor(props){
+    super(props);
+    this.state = {
+      navbarOpen: false
+    };
+
+    this.handleFinishedSurvey = this.handleFinishedSurvey.bind(this);
+    this.handleNavbar = this.handleNavbar.bind(this);
+    this.formSubmitCallback = this.formSubmitCallback.bind(this);
   }
 
-  handleNavbar = () => {
-    this.setState({ navbarOpen: !this.state.navbarOpen });
-    this.state(
-      { navbarOpen: !this.state.navbarOpen
-      }); 
+  handleNavbar() {
+    this.setState({
+      navbarOpen: !this.state.navbarOpen
+    });
   }
 
   handleFinishedSurvey () {
-    this.state (
-      {finishedSurvey : this.state.finishedSurvey}
-    )
+    this.setState ({
+      finishedSurvey : true
+    });
   }
+
+  formSubmitCallback(response){
+    this.handleFinishedSurvey();
+
+    console.log('SUBMITTED');
+
+  }
+
 
   render() {
     let current;
 
     if (!this.state.finishedSurvey) {
-      current = <ConvoForm />
+      current = <ConvoForm appCallback={this.formSubmitCallback}/>
     } else {
-      current = <Navbar 
-      navbarState={this.state.navbarOpen} 
+      current = <Navbar
+      navbarState={this.state.navbarOpen}
       handleNavbar={this.handleNavbar} />
-    }   
-    return (  
+    }
+    return (
       <>
-        <body>
-          
         <GlobalStyle />
         {current}
-        </body>
       </>
     )
   }
-}  
+}
 
 export default App;

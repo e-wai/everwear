@@ -75,6 +75,7 @@ export default class ConvoForm extends React.Component {
     var formDataSerialized = this.cf.getFormData(true);
     console.log("Formdata, obj:", formDataSerialized);
     this.cf.addRobotChatResponse("Processing your search... 😎")
+
     axios({
       method: 'post',
       url: cloudURL,
@@ -87,9 +88,9 @@ export default class ConvoForm extends React.Component {
       console.log(response);
       this.cf.addRobotChatResponse("Done! 🥳")
       // TODO: connect to App.js
-      this.props.parseResponse(response)
+      this.props.appCallback(response)
     })
-    .catch(function (error) {
+    .catch((error) => {
       // handle error
       console.log(error);
       this.cf.addRobotChatResponse("Oops! Something went wrong 😭")
