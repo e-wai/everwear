@@ -8,12 +8,8 @@ const SITES = [
   'fordays.com',
   'kotn.com',
   'livefashionable.com',
-  'outdoorvoices.com',
   'peopletree.co.uk',
   'tentree.ca',
-  'thereformation.com',
-  'thredup.com',
-  'wearethought.com',
   'wearpact.com',
 ];
 
@@ -23,6 +19,7 @@ let searchBySiteWithBrowser = async function(browser, site, q, imageUrl) {
     console.log(`GET ${url}`);
 
     try {
+      await page.setDefaultNavigationTimeout(0);
       await page.goto(url);
       // await page.screenshot({ path: `screenshots/${site}.png`, fullPage: true });
       const products = await page.$$eval(
