@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Navbar from "./components/navbar/Navbar";
 import './App.css';
 import ConvoForm from './components/ConvoForm.js';
+import ResultsList from './components/ResultsList.js';
 
 const dev = true;
 
@@ -10,6 +11,8 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
+      finishedSurvey: false,
+      results: null,
       navbarOpen: false
     };
 
@@ -32,14 +35,12 @@ class App extends Component {
 
   formSubmitCallback(response){
     // Uncomment line below to change thing:
-    // this.handleFinishedSurvey();
+    this.handleFinishedSurvey();
 
     console.log('SUBMITTED');
-    response.data.forEach((item, i) => {
-      console.log(item.site)
+    this.setState({
+      results: response.data,
     });
-
-
   }
 
   render() {
@@ -52,11 +53,13 @@ class App extends Component {
       navbarState={this.state.navbarOpen}
       handleNavbar={this.handleNavbar} />
     }
+    console.log(this.state.results);
     return (
       <div className='container'>
         {current}
+        {this.state.results && <ResultsList results={this.state.results} />}
       </div>
-    )
+    );
   }
 }
 
