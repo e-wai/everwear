@@ -49,17 +49,20 @@ class App extends Component {
 
   render() {
     let current;
+    let home;
 
     if (!this.state.finishedSurvey) {
       current = <ConvoForm appCallback={this.formSubmitCallback} dev={dev}/>
+      home= 'home'
     } else {
       current = <Navbar
       navbarState={this.state.navbarOpen}
-      handleNavbar={this.handleNavbar} />
+      handleNavbar={this.handleNavbar} />;
+      home = ''
     }
     console.log(this.state.results);
     return (
-      <div className='app-container'>
+      <div className={'app-container ' + home} >
         {current}
         {this.state.results && <ResultsList results={this.state.results} searchImg={this.state.imgSrc} q={this.state.q}/>}
       </div>

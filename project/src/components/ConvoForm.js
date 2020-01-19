@@ -99,8 +99,10 @@ export default class ConvoForm extends React.Component {
   render() {
     return (
       <>
-        <img src={greenlogo}/>
-        <p id="welcome-message">We'll help you find the clothes you already want, but from <strong>ethical</strong>, <strong>sustainable</strong> sources.</p>
+        <div id='title-text'>
+          <img id='everwear-logo' src={greenlogo}/>
+          <p id="welcome-message">We'll help you find the clothes you already want, but from <strong>ethical</strong>, <strong>sustainable</strong> sources.</p>
+        </div>
         <div id = "chat" ref={ref => this.elem = ref}>
         </div>
       </>
