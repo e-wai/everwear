@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import Navbar from "./components/navbar/Navbar";
 import './App.css';
 import ConvoForm from './components/ConvoForm.js';
-import GlobalStyle from './styles/Global';import './App.css';
+
+const dev = true;
 
 class App extends Component {
 
@@ -30,28 +31,31 @@ class App extends Component {
   }
 
   formSubmitCallback(response){
-    this.handleFinishedSurvey();
+    // Uncomment line below to change thing:
+    // this.handleFinishedSurvey();
 
     console.log('SUBMITTED');
+    response.data.forEach((item, i) => {
+      console.log(item.site)
+    });
+
 
   }
-
 
   render() {
     let current;
 
     if (!this.state.finishedSurvey) {
-      current = <ConvoForm appCallback={this.formSubmitCallback}/>
+      current = <ConvoForm appCallback={this.formSubmitCallback} dev={dev}/>
     } else {
       current = <Navbar
       navbarState={this.state.navbarOpen}
       handleNavbar={this.handleNavbar} />
     }
     return (
-      <>
-        <GlobalStyle />
+      <div className='container'>
         {current}
-      </>
+      </div>
     )
   }
 }

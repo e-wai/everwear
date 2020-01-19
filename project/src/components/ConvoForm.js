@@ -3,8 +3,9 @@ import axios from 'axios';
 //import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios'
 import { ConversationalForm } from 'conversational-form';
 import './ConvoForm.css';
-const cloudURL = 'https://us-central1-uofthacksvii-265521.cloudfunctions.net/search';
+import hardData from '../data.json';
 
+const cloudURL = 'https://us-central1-uofthacksvii-265521.cloudfunctions.net/search';
 
 export default class ConvoForm extends React.Component {
   constructor(props) {
@@ -76,34 +77,39 @@ export default class ConvoForm extends React.Component {
     console.log("Formdata, obj:", formDataSerialized);
     this.cf.addRobotChatResponse("Processing your search... 😎")
 
-    axios({
-      method: 'post',
-      url: cloudURL,
-      header: { 'content-type': 'application/json'},
-      data: {
-        imageUrl: formDataSerialized.imageUrl
-      }
-    })
-    .then((response) => {
-      console.log(response);
-      this.cf.addRobotChatResponse("Done! 🥳")
-      // TODO: connect to App.js
-      this.props.appCallback(response)
-    })
-    .catch((error) => {
-      // handle error
-      console.log(error);
-      this.cf.addRobotChatResponse("Oops! Something went wrong 😭")
-    })
+    if (this.props.dev){
+      console.log('dev');
+      console.log(hardData);
+      this.cf.addRobotChatResponse("Done! 🥳");
+      this.props.appCallback(hardData);
+    } else {
+      axios({
+        method: 'post',
+        url: cloudURL,
+        header: { 'content-type': 'application/json'},
+        data: {
+          imageUrl: formDataSerialized.imageUrl
+        }
+      })
+      .then((response) => {
+        console.log(response);
+        this.cf.addRobotChatResponse("Done! 🥳")
+        // TODO: connect to App.js
+        this.props.appCallback(response)
+      })
+      .catch((error) => {
+        // handle error
+        console.log(error);
+        this.cf.addRobotChatResponse("Oops! Something went wrong 😭")
+      })
+
+    }
+
   }
 
   render() {
     return (
-      <div id = "chat">
-        <div id = "chat2"
-          ref={ref => this.elem = ref}
-        />
-        <p>Welcome</p>
+      <div id = "chat" ref={ref => this.elem = ref}>
       </div>
     );
   }
