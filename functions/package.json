@@ -9,6 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chrome-aws-lambda": "^2.0.2",
+    "iltorb": "^2.4.4",
     "puppeteer": "^2.0.0"
+  },
+  "engines": {
+    "node": "8"
   }
 }

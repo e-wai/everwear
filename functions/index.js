@@ -1,3 +1,4 @@
+const chromium = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer');
 
 const SITES = [
@@ -33,17 +34,22 @@ let searchBySiteWithBrowser = async function(browser, site, q, imageUrl) {
 
 let search = async function(q, imageUrl) {
   const browser = await puppeteer.launch({
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath,
     headless: true,
-    args: ['--no-sandbox'],
   });
 
-  const results = await Promise.all(
-    SITES.map(site => searchBySiteWithBrowser(browser, site, q, imageUrl))
-  );
-
-  browser.close();
-
-  return results.filter(result => result);
+  try {
+    const results = await Promise.all(
+      SITES.map(site => searchBySiteWithBrowser(browser, site, q, imageUrl))
+    );
+    return results.filter(result => result);
+  } catch (err) {
+    throw err;
+  } finally {
+    await browser.close();
+  }
 };
 
 exports.search = async (req, res) => {
