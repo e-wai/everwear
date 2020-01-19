@@ -85,6 +85,7 @@ export default class ConvoForm extends React.Component {
     .then((response) => {
       console.log(response);
       this.cf.addRobotChatResponse("Done! 🥳")
+      // TODO: connect to App.js
     })
     .catch(function (error) {
       // handle error
