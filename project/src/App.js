@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Navbar from "./components/navbar/Navbar";
 import './App.css';
 import ConvoForm from './components/ConvoForm.js';
+<<<<<<< Updated upstream
 import ResultsList from './components/ResultsList.js';
 
 const dev = true;
@@ -19,6 +20,16 @@ class App extends Component {
     this.handleFinishedSurvey = this.handleFinishedSurvey.bind(this);
     this.handleNavbar = this.handleNavbar.bind(this);
     this.formSubmitCallback = this.formSubmitCallback.bind(this);
+=======
+import GlobalStyle from './styles/Global';import './App.css';
+import Suggestions from './components/navbar/Suggestions.js';
+import './components/navbar/Suggestions.css';
+
+class App extends Component {
+  state = {
+    navbarOpen: false,
+    finishedSurvey: true
+>>>>>>> Stashed changes
   }
 
   handleNavbar() {
@@ -44,7 +55,7 @@ class App extends Component {
   }
 
   render() {
-    let current;
+    let current, message;
 
     if (!this.state.finishedSurvey) {
       current = <ConvoForm appCallback={this.formSubmitCallback} dev={dev}/>
@@ -52,6 +63,7 @@ class App extends Component {
       current = <Navbar
       navbarState={this.state.navbarOpen}
       handleNavbar={this.handleNavbar} />
+<<<<<<< Updated upstream
     }
     console.log(this.state.results);
     return (
@@ -60,6 +72,20 @@ class App extends Component {
         {this.state.results && <ResultsList results={this.state.results} />}
       </div>
     );
+=======
+    }   
+
+    return (  
+      <>
+        <body>
+          
+        <GlobalStyle />
+        {current}
+        <Suggestions/>
+        </body>
+      </>
+    )
+>>>>>>> Stashed changes
   }
 }
 

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #chat {
     height: 100vh;
     display: flex;
@@ -13,4 +14,23 @@
 
 .conversational-form cf-input textarea:focus,  .conversational-form cf-input input:focus{
   box-shadow: 0 0 0 1px rgba(0,0,0);
+=======
+#chat2 {
+    visibility: visible;
+    position: absolute;
+    width: 40%;
+    height: 75vh; 
+    margin-left: 50%; 
+    margin-top: 5%;
+>>>>>>> Stashed changes
+}
+
+
+#welcome-message {
+    visibility: visible;
+    position: absolute;
+    color: white;
+    width: 30%;
+    margin-left: 15%; 
+    margin-top: 20%;
 }
