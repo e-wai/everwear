@@ -1,13 +1,12 @@
 import React from 'react';
 import './ResultsList.css';
 
-const Result = ({ site, href, src }) => (
+const Result = ({ href, src }) => (
   <li className="results-list__item">
     <a href={href}>
       <div className="results-list__item__image">
         <img src={src} />
       </div>
-      <h3 className="results-list__item__title">{site}</h3>
     </a>
     
   </li>
@@ -17,7 +16,14 @@ const ResultsList = ({ results }) => {console.log(results); return (
   <div className="results-list">
     <h2 className="results-list__title">Your results</h2>
     <ul className="results-list__list">
-      { results.map(result => <Result key={result.site} {...result} />) }
+      { results.map(result => (
+          <li key={result.site}>
+            <h3>{result.site}</h3>
+            <ul className="results-list__list">
+              { result.products.map(product => <Result key={product.src} {...product} />) }
+            </ul>
+          </li>
+        )) }
     </ul>
   </div>
 )};

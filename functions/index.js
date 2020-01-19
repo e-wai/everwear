@@ -24,9 +24,12 @@ let searchBySiteWithBrowser = async function(browser, site, q, imageUrl) {
 
     try {
       await page.goto(url);
-      //await page.screenshot({ path: `screenshots/${site}.png`, fullPage: true });
-      const [imgSrc, imgTitle] = await page.$eval('#iur img', el => [el.src, el.title]);
-      return { site, src: imgSrc, href: imgTitle };
+      // await page.screenshot({ path: `screenshots/${site}.png`, fullPage: true });
+      const products = await page.$$eval(
+        '#iur img',
+        imgs => imgs.slice(0,4).map(img => { return { src: img.src, href: img.title } })
+      );
+      return { site, products };
     } catch (err) {
       console.error(err);
       return null;
@@ -74,4 +77,4 @@ exports.search = async (req, res) => {
 
 // const q = 'black';
 // const imageUrl = 'https://underarmour.scene7.com/is/image/Underarmour/V5-1216010-001_FC_Main?scl=1&fmt=jpg';
-// search(q, imageUrl).then(console.log).catch(console.err);
+// search(q, imageUrl).then(JSON.stringify).then(console.log).catch(console.err);
