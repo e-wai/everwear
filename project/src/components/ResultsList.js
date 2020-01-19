@@ -15,7 +15,7 @@ const dict = {
 
 const Result = ({ href, src }) => (
   <li className="results-list__item">
-    <a href={href}>
+    <a href={href} target='_blank'>
       <div className="results-list__item__image">
         <img src={src} />
       </div>
@@ -32,7 +32,7 @@ const ResultsList = ({ results, searchImg, q }) => {
       <div className="results-list__list">
         { results.map(result => (
             <li key={result.site}>
-              <h3><a className='result-list__siteLink' href={'https://www.' + result.site}>{dict[result.site]}</a></h3>
+              <h3><a className='result-list__siteLink'  target='_blank' href={'https://www.' + result.site}>{dict[result.site]}</a></h3>
               <ul className="results-list__row">
                 { result.products.map(product => <Result key={product.src} {...product} />) }
               </ul>
